@@ -67,7 +67,12 @@ async def baklava(ctx):
 
 @client.command()
 async def burek(ctx):
-    await ctx.send("Ta te barem ate vbrisau v rjuho")
+    await ctx.send("Da te barem ate vbrisau v rjuho")
+
+
+@client.command()
+async def jesus(ctx):
+    await ctx.send("https://deebrestin.com/wp-content/uploads/2014/04/Jesus-Good-Shepherd-06.jpg")
 
 
 client.run("") #token
