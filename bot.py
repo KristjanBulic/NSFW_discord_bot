@@ -3,6 +3,7 @@ from bs4 import BeautifulSoup
 import requests
 import random
 
+used = []
 
 def get_pic(part):
     parts = {"tits": "https://www.pornpics.com/natural-tits/",
@@ -10,21 +11,24 @@ def get_pic(part):
              "pussy": "https://www.pornpics.com/pussy/",
              "asian": "https://www.pornpics.com/asian/",
              "milf": "https://www.pornpics.com/milf/",
-             "midget": "https://www.pornpics.com/?q=midget"
+             "midget": "https://www.pornpics.com/?q=midget",
              }
+
     url = parts[part]
-    print(url)
-    # print(url)
     html = requests.get(url).content
     root = BeautifulSoup(html, "html.parser")
     pics = []
     for picture in root.find_all('a', {"class": "rel-link"}):
         pic = picture.find('img').get('data-src')
         pics.append(pic)
-    wanted_pic = random.choice(pics)
-    print(wanted_pic)
-    return wanted_pic
 
+    wanted_pic = random.choice(pics)
+
+    if wanted_pic in used:
+        used.append(wanted_pic)
+        get_pic(part)
+    else:
+        return wanted_pic
 
 client = commands.Bot(command_prefix=".")
 
