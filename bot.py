@@ -12,6 +12,7 @@ def get_pic(part):
              "asian": "https://www.pornpics.com/asian/",
              "milf": "https://www.pornpics.com/milf/",
              "midget": "https://www.pornpics.com/?q=midget",
+             "creampie": "https://www.pornpics.com/creampie/",
              }
 
     url = parts[part]
@@ -73,6 +74,11 @@ async def milf(ctx):
 @client.command()
 async def midget(ctx):
     await ctx.send(get_pic("midget"))
+    
+    
+@client.command()
+async def creampie(ctx):
+    await ctx.send(get_pic("creampie"))
 
 
 client.run("") #token
