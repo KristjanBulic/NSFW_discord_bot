@@ -2,40 +2,28 @@ from discord.ext import commands
 from bs4 import BeautifulSoup
 import requests
 import random
-import sys
-
-
-def get_albums(part):
-    par = {"class": "photoAlbumListBlock js_lazy_bkg"}
-    parts = {"tits": "https://www.pornhub.com/albums/female-straight-uncategorized?search=tits&o=mv",
-             "ass": "https://www.pornhub.com/albums/female-straight-uncategorized?search=ass&o=mv",
-             "pussy": "https://www.pornhub.com/albums/female-straight-uncategorized?search=pussy&o=mv",
-             "asian": "https://www.pornhub.com/albums/female-straight-uncategorized?search=asian&o=mv",
-             }
-    url = parts[part]
-    html = requests.get(url).content
-    root = BeautifulSoup(html, "html.parser")
-    albums = []
-    for album in root.find_all('div', par):
-        album = "https://www.pornhub.com" + album.find('a').get('href')
-        albums.append(album)
-    return albums
 
 
 def get_pic(part):
-    albums = get_albums(part)
-    album_url = random.choice(albums)
-    html = requests.get(album_url).content
-    page = BeautifulSoup(html, "html.parser")
-    pics_urls = []
-    for pic in page.find_all('div', {"class": "js_lazy_bkg photoAlbumListBlock"}):
-        pic_url = "https://www.pornhub.com" +  pic.find('a').get('href')
-        pics_urls.append(pic_url)
-
-    wanted_pic = requests.get(random.choice(pics_urls)).content
-    page = BeautifulSoup(wanted_pic, "html.parser")
-    picture = page.find('div', {"class": "centerImage"}).find('img').get('src')
-    return picture
+    parts = {"tits": "https://www.pornpics.com/natural-tits/",
+             "ass": "https://www.pornpics.com/ass/",
+             "pussy": "https://www.pornpics.com/pussy/",
+             "asian": "https://www.pornpics.com/asian/",
+             "milf": "https://www.pornpics.com/milf/",
+             "midget": "https://www.pornpics.com/?q=midget"
+             }
+    url = parts[part]
+    print(url)
+    # print(url)
+    html = requests.get(url).content
+    root = BeautifulSoup(html, "html.parser")
+    pics = []
+    for picture in root.find_all('a', {"class": "rel-link"}):
+        pic = picture.find('img').get('data-src')
+        pics.append(pic)
+    wanted_pic = random.choice(pics)
+    print(wanted_pic)
+    return wanted_pic
 
 
 client = commands.Bot(command_prefix=".")
@@ -55,7 +43,7 @@ async def ass(ctx):
     await ctx.send(get_pic("ass"))
 
 @client.command()
-async def vagina(ctx):
+async def pussy(ctx):
     await ctx.send(get_pic("pussy"))
 
 @client.command()
@@ -68,15 +56,19 @@ async def baklava(ctx):
 
 @client.command()
 async def burek(ctx):
-    await ctx.send("Da te barem ate vbrisau v rjuho")
-
+    await ctx.send("https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi.ytimg.com%2Fvi%2Fu9UnoW4Zr2M%2Fmaxresdefault.jpg&f=1&nofb=1")
 
 @client.command()
 async def jesus(ctx):
     await ctx.send("https://deebrestin.com/wp-content/uploads/2014/04/Jesus-Good-Shepherd-06.jpg")
-    
-def exit():
-    sys.exit(0)
+
+@client.command()
+async def milf(ctx):
+    await ctx.send(get_pic("milf"))
+
+@client.command()
+async def midget(ctx):
+    await ctx.send(get_pic("midget"))
 
 
 client.run("") #token
