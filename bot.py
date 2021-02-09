@@ -25,9 +25,9 @@ def get_pic(part):
     wanted_pic = random.choice(pics)
 
     if wanted_pic in used:
-        used.append(wanted_pic)
         get_pic(part)
     else:
+        used.append(wanted_pic)
         return wanted_pic
 
 client = commands.Bot(command_prefix=".")
