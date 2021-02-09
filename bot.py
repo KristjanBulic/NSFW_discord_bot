@@ -70,4 +70,4 @@ async def burek(ctx):
     await ctx.send("Ta te barem ate vbrisau v rjuho")
 
 
-client.run("ODA4NzI0MDQ4MjM0MDIwODc0.YCKs9g.gYGbhjxKY7wn4vY_z-2-VdXjOwM") #token
+client.run("") #token
