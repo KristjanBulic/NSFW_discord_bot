@@ -79,6 +79,18 @@ async def midget(ctx):
 @client.command()
 async def creampie(ctx):
     await ctx.send(get_pic("creampie"))
+    
+ 
+@client.command()
+async def supermidget(ctx):
+    i = 0
+    while i < 20:
+        try:
+            await ctx.send(get_pic("midget"))
+            i += 1
+        except:
+            break
+
 
 
 client.run("") #token
