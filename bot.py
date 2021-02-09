@@ -2,6 +2,7 @@ from discord.ext import commands
 from bs4 import BeautifulSoup
 import requests
 import random
+import sys
 
 
 def get_albums(part):
@@ -73,6 +74,9 @@ async def burek(ctx):
 @client.command()
 async def jesus(ctx):
     await ctx.send("https://deebrestin.com/wp-content/uploads/2014/04/Jesus-Good-Shepherd-06.jpg")
+    
+def exit():
+    sys.exit(0)
 
 
 client.run("") #token
