@@ -8,13 +8,16 @@ used = []
 
 
 def get_pic(part):
-    parts = {"tits": "https://www.pornpics.com/natural-tits/",
-             "ass": "https://www.pornpics.com/ass/",
-             "pussy": "https://www.pornpics.com/pussy/",
-             "asian": "https://www.pornpics.com/asian/",
-             "milf": "https://www.pornpics.com/milf/",
+    parts = {"tits": "https://www.pornpics.com/recent/natural-tits/",
+             "ass": "https://www.pornpics.com/recent/ass/",
+             "pussy": "https://www.pornpics.com/recent/pussy/",
+             "asian": "https://www.pornpics.com/recent/asian/",
+             "milf": "https://www.pornpics.com/recent/milf/",
              "midget": "https://www.pornpics.com/?q=midget",
-             "creampie": "https://www.pornpics.com/creampie/",
+             "creampie": "https://www.pornpics.com/recent/creampie/",
+             "latina": "https://www.pornpics.com/recent/latina/",
+             "lesbian": "https://www.pornpics.com/recent/lesbian/",
+             "goth": "https://www.pornpics.com/goth/",
              }
 
     url = parts[part]
@@ -33,6 +36,7 @@ def get_pic(part):
     else:
         used.append(wanted_pic)
         return wanted_pic
+
 
 
 def get_hentai():
@@ -78,6 +82,15 @@ async def asian(ctx):
 
 
 @client.command()
+async def latina(ctx):
+    await ctx.send(get_pic("latina"))
+
+
+@client.command()
+async def lesbian(ctx):
+    await ctx.send(get_pic("lesbian"))
+
+@client.command()
 async def baklava(ctx):
     await ctx.send("Jebi se stricel")
 
@@ -109,11 +122,16 @@ async def creampie(ctx):
 
 
 @client.command()
-async def supermidget(ctx):
+async def goth(ctx):
+    await ctx.send(get_pic("goth"))
+
+
+@client.command()
+async def superhentai(ctx):
     i = 0
     while i < 20:
         try:
-            await ctx.send(get_pic("midget"))
+            await ctx.send(get_hentai())
             i += 1
         except:
             break
@@ -122,6 +140,12 @@ async def supermidget(ctx):
 @client.command()
 async def hentai(ctx):
     await ctx.send(get_hentai())
+
+
+@client.command()
+async def purge_used(ctx):
+    global used
+    used = []
 
 
 client.run("") #token
