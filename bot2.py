@@ -151,4 +151,4 @@ async def bukkake(ctx):
     await ctx.send(get_pic("bukkake"))
 
 
-client.run("ODA4NzI0MDQ4MjM0MDIwODc0.YCKs9g.bRvKE8E1AtjKhIwYPXeThf5OPh8")  # token
+client.run("")  # token
