@@ -30,20 +30,19 @@ def get_from_pornhub(album, table):
     mydb.commit()
 
 
-parts = {"part" : ['list of album urls']
+category = {"category" : ['list of album urls']
              }
 
 
 
-i = 1
-for part in parts.keys():
-    table_create = "CREATE TABLE {} (ID INTEGER PRIMARY KEY AUTOINCREMENT, url BLOB NOT NULL)".format(part)
+for cat in category.keys():
+    table_create = "CREATE TABLE {} (ID INTEGER PRIMARY KEY AUTOINCREMENT, url BLOB NOT NULL)".format(cat)
     mycurslor.execute(table_create)
-    for url_album in parts[part]:
-        print(url_album, i)
+    for url_album in category[cat]:
+        print(url_album)
         get_from_pornhub(url_album, part)
-        i += 1
+        
 
 mydb.close()
 print("done")
-print(i)
+
